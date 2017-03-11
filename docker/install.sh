@@ -3,3 +3,4 @@ sudo docker version
 sudo groupadd docker
 sudo gpasswd -a $USER docker
 sudo service docker restart
+sudo systemctl enable docker
