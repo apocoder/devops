@@ -8,7 +8,7 @@ sudo apt-get install dotnet-dev-1.0.0-preview2-003118
 sudo dpkg -i libicu52_52.1-3ubuntu0.4_amd64.deb
 
 sudo apt-get install dotnet-sharedframework-microsoft.netcore.app-1.0.0-rc2-3002702
-sudo apt-get install dotnet-dev-1.0.0-preview1-002702
+
 
 dotnet --version
 
