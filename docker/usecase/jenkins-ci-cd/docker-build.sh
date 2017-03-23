@@ -1,1 +1,1 @@
-sudo docker build -t apjenkins .
+sudo docker build -t jenkinsci .
