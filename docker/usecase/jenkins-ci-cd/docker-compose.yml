@@ -21,7 +21,7 @@ marathon:
   links:
     - zookeeper:zookeeper
   ports:
-    - "8081:8080"
+    - "8080:8080"
   # this image does not respect MARATHON_ env variables, so adding the params via command
   command: --master zk://zookeeper:2181/mesos --zk zk://zookeeper:2181/marathon
 slave:
@@ -42,3 +42,22 @@ slave:
     - mesosslace-stuff:/var/log
   expose:
     - "5051"
+jenkins:
+  image: jenkinsci
+  links:
+    - marathon:marathon
+  volumes:
+    - jenkins-stuff:/var/jenkins_home
+    - .:/var/jenkins_data
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /usr/bin/docker:/usr/bin/docker
+  ports:
+    - "8081:8080"
+registry:
+  image: registry
+  environment:
+    - STORAGE_PATH=/registry
+  volumes:
+    - registry-stuff:/registry
+  ports:
+    - "5000:5000"

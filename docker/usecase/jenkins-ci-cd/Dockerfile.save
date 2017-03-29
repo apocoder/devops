@@ -1,0 +1,11 @@
+FROM jenkins:1.596
+
+USER root
+COPY plugins.txt /usr/share/jenkins/plugins.txtRUN apt-get update \
+      && apt-get install -y sudo \
+      && rm -rf /var/lib/apt/lists/*
+RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
+
+USER jenkins
+COPY plugins.txt /plugins.txt
+RUN /usr/local/plugins.sh /plugins.txt
